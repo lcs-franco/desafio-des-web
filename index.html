@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/png">
   <title>Takaminho App</title>
 </head>
 <body>
-  <div id="landing-page">
-    <h1>Takaminho App</h1>
-    <p>Gerencie suas entregas como nunca antes!</p>
-    <button id="access-app">Acessar App</button>
+  <div class="navigation-bar">
+    <div class="logotipo">
+      <a href="#">
+        <img src="images/logotipo.png" alt="Logotipo Takaminho App">
+      </a>
+    </div>
+    <button class="button-app">
+      Acesse o app
+    </button>
   </div>
-
+  <div class="banner">
+    <div class="conteudo-esquerdo">
+      <h1>Calma, que já Takaminho!</h1>
+      <p>Não desperdice seu tempo, tenha produtividade e faça entregas rápidas, encontraremos a melhor rota de entrega
+        para você.</p>
+      <button class="button-app">
+        Acesse agora
+      </button>
+    </div>
+    <div class="ilustracao-direita">
+      <img src="images/ilustracao1-freepik.png"
+        alt="Ilustração de um smartphone com um aplicativo de mapas e um motoboy entregando um pedido">
+      <p>Ilustrado por <span class="creditos">Freepik</span></p>
+    </div>
+  </div>
   <script>
-    document.getElementById('access-app').addEventListener('click', () => {
-      window.location.href = "routes.html";
-    });
+    var botoes = document.getElementsByClassName('button-app')
+    for (let i = 0; i < botoes.length; i++) {
+      botoes[i].addEventListener('click', () => {
+        window.location.href = "routes.html";
+      });
+    }
   </script>
 </body>
 </html>
