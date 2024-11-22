@@ -23,7 +23,7 @@
         <div class="container">
             <div class="formulario">
                 <h2>Cadastro de endereço</h2>
-                <form action="/cadastrar-endereco" method="POST">
+                <form id="NovoEndereco">
                     <label for="nome">Nome do cliente:</label>
                     <input type="text" id="nome" name="nome" required>
             
@@ -55,13 +55,36 @@
         </div>
  
         <script>
-            var botoes = document.getElementsByClassName('button-app')
-            for (let i = 0; i < botoes.length; i++) {
-                botoes[i].addEventListener('click', () => {
-                window.location.href = "routes.html";
-                });
-            }
+            const form = document.getElementById("NovoEndereco");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+        
+                // Captura os valores do formulário
+                const enderecoNome = document.getElementById("nome").value;
+                const enderecoRua = document.getElementById("rua").value;
+                const enderecoNum = document.getElementById("numero").value;
+                const enderecoComp = document.getElementById("complemento").value;
+                const enderecoBairro = document.getElementById("bairro").value;
+                const enderecoCidade = document.getElementById("cidade").value;
+                const enderecoEstado = document.getElementById("estado").value;
+                const enderecoCep = document.getElementById("cep").value;
+        
+                // Cria uma linha CSV
+                const linhaCSV = `"${enderecoNome}","${enderecoRua}","${enderecoNum}","${enderecoComp}","${enderecoBairro}","${enderecoCidade}","${enderecoEstado}","${enderecoCep}"\n`;
+        
+                // Cabeçalho do CSV (se for o primeiro download)
+                const cabecalhoCSV = `"Nome","Rua","Número","Complemento","Bairro","Cidade","Estado","CEP"\n`;
+        
+                // Verifica se já há dados salvos no armazenamento local
+                const dadosExistentes = localStorage.getItem("enderecosCSV") || cabecalhoCSV;
+        
+                // Adiciona a nova linha aos dados existentes
+                const novosDadosCSV = dadosExistentes + linhaCSV;
+        
+                // Atualiza o armazenamento local
+                localStorage.setItem("enderecosCSV", novosDadosCSV);
+            });
         </script>
     </body>
-  </html>
+</html>
  

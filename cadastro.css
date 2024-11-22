@@ -12,7 +12,7 @@ h2 {
   /* Container geral */
   .container {
     padding: 110px 5px 0px;
-    height: 100vh;
+    height: calc(100vh - 110px);
     background-color: var(--cor-azul);
     display: flex;
     justify-content: space-around;
@@ -21,6 +21,7 @@ h2 {
   
   /* Estilo do formulário */
   .formulario {
+    padding: 20px;
     flex: 1;
     max-width: 400px;
   }
@@ -60,7 +61,7 @@ h2 {
   .caixa-enderecos {
     flex: 1;
     height: 650px;
-    max-width: 400px;
+    max-width: 900px;
     border: 2px solid #FF4A4A;
     border-radius: 8px; 
     padding: 20px;

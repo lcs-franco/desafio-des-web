@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="cadastro.css">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="images/favicon.png" type="image/png">
+        <title>Takaminho App</title>
+    </head>
+
+    <body>
+        <div class="navigation-bar">
+            <div class="logotipo">
+                <a href="index.html">
+                    <img src="images/logotipo.png" alt="Logotipo Takaminho App">
+                </a>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="caixa-enderecos">
+                <h2>Endereços cadastrados</h2>
+                <ul id="lista-enderecos">
+                </ul>
+            </div>
+
+        </div>
+
+        <script>
+            // Função para carregar os endereços do CSV armazenado no localStorage
+            function carregarEnderecos() {
+                // Obtém os dados CSV salvos no localStorage
+                const dadosCSV = localStorage.getItem("enderecosCSV");
+                const listaEnderecos = document.getElementById("lista-enderecos");
+        
+                // Verifica se há dados para exibir
+                if (!dadosCSV) {
+                    listaEnderecos.innerHTML = "<li>Nenhum endereço cadastrado.</li>";
+                    return;
+                }
+        
+                // Divide os dados CSV em linhas
+                const linhas = dadosCSV.split("\n");
+        
+                // Remove o cabeçalho do CSV (primeira linha)
+                const linhasSemCabecalho = linhas.slice(1);
+        
+                // Limpa a lista de endereços antes de adicionar novos
+                listaEnderecos.innerHTML = "";
+        
+                // Deixa em linhas e cria os itens da lista
+                linhasSemCabecalho.forEach((linha) => {
+                    if (linha.trim()) {
+                        const colunas = linha.split(",");
+                        const enderecoFormatado = `${colunas[0]} ${colunas[1]} ${colunas[2]} ${colunas[3]}, ${colunas[4]} ${colunas[5]}, ${colunas[6]}`; 
+                        const li = document.createElement("li");
+                        li.textContent = enderecoFormatado;
+                        listaEnderecos.appendChild(li);
+                    }
+                });
+            }
+        
+            // Carrega os endereços ao carregar a página
+            document.addEventListener("DOMContentLoaded", carregarEnderecos);
+        </script>
+    </body>
+</html>
