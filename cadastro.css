@@ -12,7 +12,7 @@ h2 {
   /* Container geral */
   .container {
     padding: 110px 5px 0px;
-    height: calc(100vh - 110px);
+    height: calc(120vh - 110px);
     background-color: var(--cor-azul);
     display: flex;
     justify-content: space-around;
